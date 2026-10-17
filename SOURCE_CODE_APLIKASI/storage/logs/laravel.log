@@ -50,3 +50,7 @@ esbot\\carbon\\src\\Carbon\\Carbon.php(488): Carbon\\Carbon->__construct(NULL, N
 #17 H:\\KATALOG_APLIKASI_PWA_SELESAI_TERUJI\\ID62A5 - LaraParkir - Software Parkir Kendaraan Otomatis Dan Cetak Karcis Barcode\\SOURCE_CODE_APLIKASI\\artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
 #18 {main}
 "} 
+[2026-10-17 19:44:45] production.ERROR: Declaration of Doctrine\DBAL\Driver\PDOConnection::query() must be compatible with PDO::query(string $query, ?int $fetchMode = null, mixed ...$fetchModeArgs): PDOStatement|false {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Declaration of Doctrine\\DBAL\\Driver\\PDOConnection::query() must be compatible with PDO::query(string $query, ?int $fetchMode = null, mixed ...$fetchModeArgs): PDOStatement|false at D:\\FokusKonten-Server\\App_Web\\ID62A5-LaraParkir\\SOURCE_CODE_APLIKASI\\vendor\\doctrine\\dbal\\lib\\Doctrine\\DBAL\\Driver\\PDOConnection.php:89)
+[stacktrace]
+#0 {main}
+"} 
