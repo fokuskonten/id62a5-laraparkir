@@ -32,16 +32,19 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	<a href="" class="navbar-brand" style="font-family: 'Bangers', cursive;">Parkir.In</span>	</a>
+	<a href="{{ url('/home') }}" class="navbar-brand d-flex align-items-center" style="font-weight: 700; font-size: 1.25rem;">
+		<img src="{{ asset('logo.png') }}" alt="Logo" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover; margin-right: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+		<span>LaraParkir</span>
+	</a>
 
 	<div class="collapse navbar-collapse">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item active">
-				<a href="/home" class="nav-link">Dashboard <span class="sr-only"></span></a>
+				<a href="{{ url('/home') }}" class="nav-link">Dashboard <span class="sr-only"></span></a>
 			</li>
 			@if (Auth::user()->level == "User")
 			<li class="nav-item">
-				<a href="/transaksi/kendaraan_masuk" class="nav-link" role="button">Input Parkir</a>
+				<a href="{{ url('/transaksi/kendaraan_masuk') }}" class="nav-link" role="button">Input Parkir</a>
 			</li>
 			@endif
 			@if (Auth::user()->level == "Admin")
@@ -49,16 +52,16 @@
 			<a href="#" class="nav-link dropdown-toggle" id="laporan" data-toggle="dropdown" role="button">Laporan
 			</a>
 			<div class="dropdown-menu">
-				<a href="/laporan/LaporanParkiranKeluar" class="dropdown-item">Laporan Parkir</a>
-				<a href="/laporan/LaporanParkiranTanggal" class="dropdown-item">Laporan Parkir Per-Tanggal</a>
+				<a href="{{ url('/laporan/LaporanParkiranKeluar') }}" class="dropdown-item">Laporan Parkir</a>
+				<a href="{{ url('/laporan/LaporanParkiranTanggal') }}" class="dropdown-item">Laporan Parkir Per-Tanggal</a>
 			</div>
 			
 			</li>
 			<li class="nav-item">
-				<a href="/pegawai/DataPegawai" class="nav-link">Data Pegawai <span class="fa fa-user"></span></a>
+				<a href="{{ url('/pegawai/DataPegawai') }}" class="nav-link">Data Pegawai <span class="fa fa-user"></span></a>
 			</li>
 			<li class="nav-item">
-				<a href="/tarif/TarifParkir" class="nav-link">Kelola Tarif <span class="fa fa-money"></span></a>
+				<a href="{{ url('/tarif/TarifParkir') }}" class="nav-link">Kelola Tarif <span class="fa fa-money"></span></a>
 			</li>
 			@endif
 		</ul>
@@ -78,13 +81,9 @@
 	</div>
 </div>
 
-{{-- <footer class="bg-dark" style="width:100%%;height:90px;bottom:0;color:#999;margin-top:20%">
-	<div class="row">
-	<div class="col-md-12">
-		<p style="font-size:22px;margin-left:36%;margin-top:2.2%"><span class="fa fa-copyright"> Copyrights 2018 | Create By <a href="">Pramudya Saputra</a></span></p>				
-	</div>
-	</div>			
-</footer> --}}
+<footer class="text-center py-3 mt-4" style="font-size: 12px; color: #64748b; font-family: sans-serif; border-top: 1px solid #e2e8f0;">
+	Didukung oleh <a href="https://fokuskonten.my.id" target="_blank" style="color: #2563eb; font-weight: 600; text-decoration: none;">FokusKonten</a> &bull; Solusi Aset Digital Terpercaya
+</footer>
 
 
 <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>

@@ -54,6 +54,7 @@ class PDOConnection extends PDO implements Connection, ServerInfoAwareConnection
     /**
      * {@inheritdoc}
      */
+    #[\ReturnTypeWillChange]
     public function exec($statement)
     {
         try {
@@ -74,6 +75,7 @@ class PDOConnection extends PDO implements Connection, ServerInfoAwareConnection
     /**
      * {@inheritdoc}
      */
+    #[\ReturnTypeWillChange]
     public function prepare($prepareString, $driverOptions = [])
     {
         try {
@@ -86,25 +88,14 @@ class PDOConnection extends PDO implements Connection, ServerInfoAwareConnection
     /**
      * {@inheritdoc}
      */
-    public function query()
+    #[\ReturnTypeWillChange]
+    public function query($query = null, ...$args)
     {
-        $args = func_get_args();
-        $argsCount = count($args);
-
         try {
-            if ($argsCount == 4) {
-                return parent::query($args[0], $args[1], $args[2], $args[3]);
+            if ($query === null) {
+                return false;
             }
-
-            if ($argsCount == 3) {
-                return parent::query($args[0], $args[1], $args[2]);
-            }
-
-            if ($argsCount == 2) {
-                return parent::query($args[0], $args[1]);
-            }
-
-            return parent::query($args[0]);
+            return parent::query($query, ...$args);
         } catch (\PDOException $exception) {
             throw new PDOException($exception);
         }

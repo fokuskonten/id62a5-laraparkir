@@ -67,24 +67,11 @@ class PDOStatement extends \PDOStatement implements Statement
     /**
      * {@inheritdoc}
      */
-    public function setFetchMode($fetchMode, $arg2 = null, $arg3 = null)
+    #[\ReturnTypeWillChange]
+    public function setFetchMode(...$args)
     {
-        $fetchMode = $this->convertFetchMode($fetchMode);
-
-        // This thin wrapper is necessary to shield against the weird signature
-        // of PDOStatement::setFetchMode(): even if the second and third
-        // parameters are optional, PHP will not let us remove it from this
-        // declaration.
         try {
-            if ($arg2 === null && $arg3 === null) {
-                return parent::setFetchMode($fetchMode);
-            }
-
-            if ($arg3 === null) {
-                return parent::setFetchMode($fetchMode, $arg2);
-            }
-
-            return parent::setFetchMode($fetchMode, $arg2, $arg3);
+            return parent::setFetchMode(...$args);
         } catch (\PDOException $exception) {
             throw new PDOException($exception);
         }
@@ -93,6 +80,7 @@ class PDOStatement extends \PDOStatement implements Statement
     /**
      * {@inheritdoc}
      */
+    #[\ReturnTypeWillChange]
     public function bindValue($param, $value, $type = ParameterType::STRING)
     {
         $type = $this->convertParamType($type);
@@ -107,6 +95,7 @@ class PDOStatement extends \PDOStatement implements Statement
     /**
      * {@inheritdoc}
      */
+    #[\ReturnTypeWillChange]
     public function bindParam($column, &$variable, $type = ParameterType::STRING, $length = null, $driverOptions = null)
     {
         $type = $this->convertParamType($type);
@@ -121,6 +110,7 @@ class PDOStatement extends \PDOStatement implements Statement
     /**
      * {@inheritdoc}
      */
+    #[\ReturnTypeWillChange]
     public function closeCursor()
     {
         try {
@@ -135,10 +125,11 @@ class PDOStatement extends \PDOStatement implements Statement
     /**
      * {@inheritdoc}
      */
-    public function execute($params = null)
+    #[\ReturnTypeWillChange]
+    public function execute(...$args)
     {
         try {
-            return parent::execute($params);
+            return parent::execute(...$args);
         } catch (\PDOException $exception) {
             throw new PDOException($exception);
         }
@@ -147,24 +138,11 @@ class PDOStatement extends \PDOStatement implements Statement
     /**
      * {@inheritdoc}
      */
-    public function fetch($fetchMode = null, $cursorOrientation = \PDO::FETCH_ORI_NEXT, $cursorOffset = 0)
+    #[\ReturnTypeWillChange]
+    public function fetch(...$args)
     {
-        $fetchMode = $this->convertFetchMode($fetchMode);
-
         try {
-            if ($fetchMode === null && \PDO::FETCH_ORI_NEXT === $cursorOrientation && 0 === $cursorOffset) {
-                return parent::fetch();
-            }
-
-            if (\PDO::FETCH_ORI_NEXT === $cursorOrientation && 0 === $cursorOffset) {
-                return parent::fetch($fetchMode);
-            }
-
-            if (0 === $cursorOffset) {
-                return parent::fetch($fetchMode, $cursorOrientation);
-            }
-
-            return parent::fetch($fetchMode, $cursorOrientation, $cursorOffset);
+            return parent::fetch(...$args);
         } catch (\PDOException $exception) {
             throw new PDOException($exception);
         }
@@ -173,24 +151,11 @@ class PDOStatement extends \PDOStatement implements Statement
     /**
      * {@inheritdoc}
      */
-    public function fetchAll($fetchMode = null, $fetchArgument = null, $ctorArgs = null)
+    #[\ReturnTypeWillChange]
+    public function fetchAll(...$args)
     {
-        $fetchMode = $this->convertFetchMode($fetchMode);
-
         try {
-            if ($fetchMode === null && null === $fetchArgument && null === $ctorArgs) {
-                return parent::fetchAll();
-            }
-
-            if (null === $fetchArgument && null === $ctorArgs) {
-                return parent::fetchAll($fetchMode);
-            }
-
-            if (null === $ctorArgs) {
-                return parent::fetchAll($fetchMode, $fetchArgument);
-            }
-
-            return parent::fetchAll($fetchMode, $fetchArgument, $ctorArgs);
+            return parent::fetchAll(...$args);
         } catch (\PDOException $exception) {
             throw new PDOException($exception);
         }
@@ -199,10 +164,11 @@ class PDOStatement extends \PDOStatement implements Statement
     /**
      * {@inheritdoc}
      */
-    public function fetchColumn($columnIndex = 0)
+    #[\ReturnTypeWillChange]
+    public function fetchColumn(...$args)
     {
         try {
-            return parent::fetchColumn($columnIndex);
+            return parent::fetchColumn(...$args);
         } catch (\PDOException $exception) {
             throw new PDOException($exception);
         }

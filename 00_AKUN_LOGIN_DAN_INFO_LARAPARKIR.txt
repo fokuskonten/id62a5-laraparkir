@@ -14,8 +14,12 @@ Bantuan WA : +62 851-8301-1318
 
 2. KREDENSIAL AKUN LOGIN RESMI
 --------------------------------------------------------------------------------
-Akun [1]:
-   - Username / User : admin
+Akun [1] Administrator:
+   - Username / User : admin  (atau admin@fokuskonten.my.id)
+   - Password / Sandi: admin
+
+Akun [2] Operator / Petugas Loket:
+   - Username / User : operator@parkir.local
    - Password / Sandi: admin
 
 3. KONEKSI BASIS DATA (DATABASE)
